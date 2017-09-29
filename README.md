@@ -1,33 +1,21 @@
-# INDIGO Identity and Access Management (IAM) service
+# INDIGO IAM service documentation
 
-![jenkins-build-status-develop](https://ci.cloud.cnaf.infn.it/job/iam/job/develop/badge/icon)
-![sonarqube-qg](https://sonar.cloud.cnaf.infn.it/api/badges/gate?key=it.infn.mw%3Aiam-parent)
-![sonarqube-coverage](https://sonar.cloud.cnaf.infn.it/api/badges/measure?key=it.infn.mw%3Aiam-parent&metric=coverage)
+This is the INDIGO IAM service documentation
 
-The INDIGO IAM is an Identity and Access Management service first developed in the
-context of the [INDIGO-Datacloud H2020 project][indigo-datacloud].
+## Documentation structure
 
-## Main features
+The INDIGO IAM service documentation is composed of the following guides:
 
-- OpenID connect provider based on the [MitreID OpenID connect library][mitreid]
-- [SCIM][scim] user provisioning and management APIs
-- SAML authentication support
-- Google authentication support 
-- [OAuth token exchange][token-exchange] support
+- the [Deployment and administration guide][admin-guide], targeted ad system
+  administrators interested in deploying, configuring and monitoring the
+  service;
+- the [User guide][user-guide], targeted at service users, that explains how to
+  use the IAM to authenticate and authorize users, manage user registration,
+  etc;
+- the [Developer guide][developer-guide], targeted at the IAM service
+  developers, that provides insight on how to build, develop and test the
+  service.
 
-## What's new
-
-See the [changelog](CHANGELOG.md).
-
-## Build instructions
-
-See the [developer guide](doc/developer.md).
-
-## License
-
-[Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0)
-
-[indigo-datacloud]: https://www.indigo-datacloud.eu/ 
-[mitreid]: https://github.com/mitreid-connect/OpenID-Connect-Java-Spring-Server
-[scim]: http://www.simplecloud.info/
-[token-exchange]: https://tools.ietf.org/html/draft-ietf-oauth-token-exchange-09
+[admin-guide]: admin-guide/README.md
+[user-guide]: user-guide/README.md
+[developer-guide]: developer-guide/README.md

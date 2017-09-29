@@ -21,30 +21,42 @@ NGINX reverse proxy (it could run equally well behing apache, but we tested it
 behind NGINX).
 
 ### Deployment Tips
-In headless servers, running `haveged` daemon is recommended to generate more
-entropy.
-Before run IAM Login service, check the available entropy with:
+
+In headless servers, running `haveged` daemon is recommended to generate the
+entropy needed by the cryptographic operations performed by the IAM.
+
+You can check the available entropy in your system with the following command:
 
 ```console
 $ cat /proc/sys/kernel/random/entropy_avail
 ```
 
-If the obtained value is less than 1000, then `haveged` daemon is mandatory.
+If the obtained value is less than 1000, the use of the `haveged` daemon is
+strongly recommended.
 
-On CentOS only, add EPEL repository:
+#### Haveged installation instructions
+
+##### CentOS
+
+Install the EPEL repository:
+
 ```console
 $ sudo yum install -y epel-release
 ```
- Then, install Haveged:
+Then, install Haveged:
+
 ```console
 $ sudo yum install -y haveged
 ```
-or in Ubuntu:
+
+##### Ubuntu
+
 ```console
 $ sudo apt-get install -y haveged
 ```
 
-Enable and run it:
+Then enable and run the service via systemd:
+
 ```console
 $ sudo systemctl enable haveged
 $ sudo systemctl start haveged
