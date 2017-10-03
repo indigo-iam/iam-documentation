@@ -1,6 +1,10 @@
-# INDIGO IAM service documentation
+# INDIGO IAM service documentation 
 
-This is the INDIGO IAM service documentation
+This is the INDIGO IAM service documentation for IAM **{{book.iamVersion}}**
+
+## Release notes
+
+See the [release notes on Github][release-notes].
 
 ## Documentation structure
 
@@ -19,3 +23,4 @@ The INDIGO IAM service documentation is composed of the following guides:
 [admin-guide]: admin-guide/README.md
 [user-guide]: user-guide/README.md
 [developer-guide]: developer-guide/README.md
+[release-notes]: https://github.com/indigo-iam/iam/releases/tag/{{book.iamVersion}}

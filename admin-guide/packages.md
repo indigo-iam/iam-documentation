@@ -1,16 +1,13 @@
-## Deployment with precompiled packages
+# Deployment with packages
 
-Starting with version 1.0.0, we provided precompiled packages for the IAM Login
-Service for the following platforms:
+Starting with version 1.0.0, we provide  packages for the IAM Login Service for
+the following platforms:
  - CentOS 7
  - Ubuntu 16.04
 
-Packages and repo files are hosted on https://repo.cloud.cnaf.infn.it/repository/indigo-iam/index.html
-public repository.
+Packages and repo files are hosted on the [INDIGO IAM package repository][iam-pkg-repo].
 
-#### Add Indigo repository
-
-First add the Indigo IAM repository.
+## Configure the INDIGO IAM repository
 
 On CentOS:
 ```console
@@ -37,7 +34,7 @@ following configuration option:
 $ sudo echo 'APT::Get::AllowUnauthenticated yes;' > /etc/apt/apt.conf.d/99auth
 ```
 
-#### Installation
+## Package installation
 
 Refresh the repository cache and install the IAM login service package.
 
@@ -53,13 +50,14 @@ $ sudo apt-get update -y
 $ sudo apt-get install -y iam-login-service
 ```
 
-#### Configuration
+## IAM service configuration
 
-The configuration file contains the environment variables used by the
-Login Service for the configuration.
-The description of all the variables and the can be found [here](configuration.md).
+The IAM service is configured via a configuration file named `iam-login-service`
+which holds the settings for the environment variables that drive its
+configuration (as described in the [configuration reference
+section](configuration_reference.md)).
 
-This file is located under different path, according the OS platform.
+The file is located in the following path:
 
 On Centos
 ```
@@ -71,14 +69,26 @@ On Ubuntu:
 /etc/default/iam-login-service
 ```
 
-#### Run the service
+## Run the service
 
-The service is managed by `systemd`, so to run it use:
+The IAM login service is managed by `systemd`.
+
+To enable the service use the following command:
+
+```console
+$ sudo systemctl enable iam-login-service
+```
+
+To start the service use the following command:
+
 ```console
 $ sudo systemctl start iam-login-service
 ```
 
-Check the output from the journal:
+To access the service logs, use the following command:
+
 ```console
 $ sudo journalctl -fu iam-login-service
 ```
+
+[iam-pkg-repo]: https://repo.cloud.cnaf.infn.it/repository/indigo-iam/index.html

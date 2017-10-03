@@ -1,8 +1,14 @@
-## SCIM API reference
+# SCIM API reference
 
-The IAM server has a RESTful API that is used to manage users, change their personal information, add or remove them from a group, add Open ID Connect accounts, x509 certificates, ssh keys, ecc.
+The IAM server provides a RESTful API based on the [SCIM standard][scim] that
+is used to manage users, change their personal information, manage their group
+membership, etc. 
 
-The API may be accessed through an active web session within the application or through authorizing a client application through OAuth. The SCIM protocol, in fact, does not define a scheme for authentication and authorization therefore implementers are free to choose mechanisms appropriate to their use cases. All examples assume OAuth2 bearer token; e.g.
+Access to the API is restricted to administrator users or OAuth clients that
+have access to the `scim:read` (for read access) or `scim:write` (for write
+access) OAuth scopes.
+
+Examples below assume OAuth authorization via bearer token: e.g.
 
 ```
 GET /Users/2819c223-7f76-453a-919d-413861904646 HTTP/1.1
@@ -10,24 +16,26 @@ Host: example.com
 Authorization: Bearer h480djs93hd8
 ```
 
-The SCIM protocol specifies well known endpoints and HTTP methods for managing Resources defined in the [core schema](https://tools.ietf.org/html/rfc7643) i.e., User and Group Resources correspond to /Users and /Groups respectively.
+The SCIM protocol specifies well known endpoints and HTTP methods for managing
+Resources defined in the [SCIM core schema specification][scim-core-schema]
+i.e., User and Group Resources correspond to /Users and /Groups respectively.
 
 ### IAM SCIM Endpoints
 
-IAM maps User and Group resource endpoints to:
+IAM maps User and Group resource endpoints to the following endpoints:
 
 - `/scim/Users`
 - `/scim/Groups`
 
 For each endpoint, the following methods are allowed:
 
-| HTTP Method | Description |
-|-------------|-------------|
-| GET | Retrieves a complete or partial Resource. |
-| POST | Create new Resource or bulk modify Resources. |
-| PUT | Replace completely a Resource. |
-| PATCH | Modifies a Resource with a set of specified changes \(partial update\). |
-| DELETE | Deletes a Resource. |
+| HTTP Method   | Description                                                             |
+| ------------- | -------------                                                           |
+| GET           | Retrieves a complete or partial Resource.                               |
+| POST          | Create new Resource or bulk modify Resources.                           |
+| PUT           | Replace completely a Resource.                                          |
+| PATCH         | Modifies a Resource with a set of specified changes \(partial update\). |
+| DELETE        | Deletes a Resource.                                                     |
 
 #### GET `/scim/Users/{id}`
 
@@ -98,7 +106,8 @@ POST http://localhost:8080/scim/Users/
 }
 ```
 
-Successful Resource creation is indicated with a 201 ("Created") response code. Upon successful creation, the response body contains the newly created User.
+Successful Resource creation is indicated with a `201 Created` response code.
+Upon successful creation, the response body contains the newly created User.
 
 ```
 {
@@ -135,24 +144,28 @@ Successful Resource creation is indicated with a 201 ("Created") response code. 
 
 Requires `ROLE_ADMIN` or scope `scim:read`.
 
-SCIM defines a standard set of operations that can be used to filter, sort, and paginate response results. The operations are specified by adding query parameters to the Resource's endpoint.
+SCIM defines a standard set of operations that can be used to filter, sort, and
+paginate response results. The operations are specified by adding query
+parameters to the Resource's endpoint.
 
-**Pagination** parameters can be used together to "page through" large numbers of Resources. Pagination is not session based so clients must never assume repeatable results.
+**Pagination** parameters can be used together to "page through" large numbers
+of Resources. Pagination is not session based so clients must never assume
+repeatable results.
 
 The following table describes the URL pagination parameters.
 
-| Parameter | Description | Default |
-|-----------|-------------|---------|
-|startIndex | The 1-based index of the first search result. | 1 |
-| count     | Non-negative Integer. Specifies the desired maximum number of search results per page; e.g., 10. | None. |
+| Parameter   | Description                                                                                      | Default   |
+| ----------- | -------------                                                                                    | --------- |
+| startIndex  | The 1-based index of the first search result.                                                    | 1         |
+| count       | Non-negative Integer. Specifies the desired maximum number of search results per page; e.g., 10. | None.     |
 
 The following table describes the query response pagination attributes.
 
-| Element | Description |
-|---------|-------------|
+| Element      | Description                                                                                               |
+| ---------    | -------------                                                                                             |
 | itemsPerPage | Non-negative Integer. Specifies the number of search results returned in a query response page; e.g., 10. |
-| totalResults | Non-negative Integer. Specifies the total number of results matching the client query; e.g., 1000. |
-| startIndex | The 1-based index of the first result in the current set of search results; e.g., 1. |
+| totalResults | Non-negative Integer. Specifies the total number of results matching the client query; e.g., 1000.        |
+| startIndex   | The 1-based index of the first result in the current set of search results; e.g., 1.                      |
 
 The below example returns the first 10 users (implicit startIndex as 1):
 
@@ -228,8 +241,8 @@ GET /scim/Users?count=10
 }
 ```
 
-The details of the returned users can be reduced/filtered by specifying the needed attribute(s).
-The below example returns only the userName for all Users:
+The details of the returned users can be reduced/filtered by specifying the
+needed attribute(s). The below example returns only the userName for all Users:
 
 ```
 GET http://localhost:8080/scim/Users?attributes=userName
@@ -347,17 +360,16 @@ Request params:
 }
 ```
 
-**Filtering** and **sorting** are not supported.
+SCIM **Filtering** and **sorting** of results are currently not supported.
 
 #### PUT `/scim/Users/{id}`
 
 Requires `ROLE_ADMIN` or scope `scim:write`.
 
-PUT performs a full update.
-Clients should retrieve the entire resource and then PUT the desired modifications as the operation
-overwrites all previously stored data.
-A successful PUT operation returns a 200 OK response code and the entire
-resource within the response body.
+PUT performs a full update. Clients should retrieve the entire resource and
+then PUT the desired modifications as the operation overwrites all previously
+stored data. A successful PUT operation returns a 200 OK response code and the
+entire resource within the response body.
 
 Example of changing the userName from `john_lennon` to `j.lennon` and setting `active` as true:
 
@@ -455,11 +467,13 @@ Content-Type: application/scim+json;charset=UTF-8
 
 Requires `ROLE_ADMIN` or scope `scim:write`.
 
-PATCH enables consumers to send only the attributes requiring modification, reducing network and processing overhead.
-Attributes may be deleted, replaced, merged, or added in a single request.
-The body of a PATCH request MUST contain a partial resource with the desired modifications.
-The server MUST return either a 200 OK response code and the entire Resource within the response body,
-or a 204 No Content response code and the appropriate response headers for a successful PATCH request.
+PATCH enables consumers to send only the attributes requiring modification,
+reducing network and processing overhead. Attributes may be deleted, replaced,
+merged, or added in a single request. The body of a PATCH request MUST contain
+a partial resource with the desired modifications. The server MUST return
+either a 200 OK response code and the entire Resource within the response body,
+or a 204 No Content response code and the appropriate response headers for a
+successful PATCH request.
 
 The following example shows how to replace the userName:
 
@@ -660,9 +674,10 @@ GET http://localhost:8080/scim/Groups?startIndex=22&count=1
 
 Requires `ROLE_ADMIN` or scope `scim:write`.
 
-PUT performs a full update. Clients should retrieve the entire resource and then PUT the desired modifications
-as the operation overwrites all previously stored data.
-A successful PUT operation returns a 200 OK response code and the entire resource within the response body.
+PUT performs a full update. Clients should retrieve the entire resource and
+then PUT the desired modifications as the operation overwrites all previously
+stored data. A successful PUT operation returns a 200 OK response code and the
+entire resource within the response body.
 
 Example of replacing group with a different displayName:
 
@@ -752,3 +767,5 @@ GET /scim/Groups/5bae2407-08e3-4171-b180-4b4a0196e7b6
 [mitre]: https://github.com/mitreid-connect/OpenID-Connect-Java-Spring-Server
 [mitre-doc]: https://github.com/mitreid-connect/OpenID-Connect-Java-Spring-Server/wiki
 [mitre-doc-api]: https://github.com/mitreid-connect/OpenID-Connect-Java-Spring-Server/wiki/API
+[scim]: http://www.simplecloud.info/
+[core-schema]: https://tools.ietf.org/html/rfc7643
