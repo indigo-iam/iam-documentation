@@ -1,11 +1,6 @@
 # Registration service
 
-IAM provides a registration service that allows to have manged enrollment 
-IAM provides a registration service that allows users to submit a membership
-request. Such request is then approved or rejected by the IAM administrators.
+IAM provides a registration service that allows to have managed enrollment 
+for the organization under control. This mean that access to the organization is only
+granted after explicit approval by a IAM administrator for the organization.
 
-- [Submit a request](submit-request.md)
-- [Confirm a request](confirm-request.md)
-- [Manage registration requests](manage-request.md)
-- [Set account password](choosing-password.md)
-- [Reset account password](resetting-password.md)

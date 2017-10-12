@@ -1,4 +1,4 @@
-## OAuth Token exchange support
+# OAuth Token exchange API
 
 The current release of the INDIGO IAM implements part of the [Token Exchange
 OAuth
@@ -46,7 +46,7 @@ of these scenarios, where a client can exchange an access token received from
 antoher client with a new token (or a set of tokens, as we will see) by
 interacting with a trusted OAuth authorization server.
 
-#### Impersonation vs delegation
+## Impersonation vs delegation
 
 As specified in the [Token Exchange OAuth
 specification](https://tools.ietf.org/html/draft-ietf-oauth-token-exchange-05),
@@ -63,15 +63,14 @@ More details about the difference from this two semantics can be found in
 The INDIGO IAM token exchange implementation currently supports only
 impersonation semantics.
 
-### Configuration
+## Client configuration requirements
 
 In order to request a token exchange, a client must be configured with the
 `urn:ietf:params:oauth:grant-type:token-exchange` grant type enabled. The token
 exchange grant type is **disabled** by default for dynamically registered
-clients, and can be enabled only by users with administrative privileges on the
-IAM.
+clients, and can be enabled only by users with administrative privileges.
 
-### The token exchange request
+## The token exchange request
 
 A client who wants to exchange an access token with a new one (or a couple of
 new tokens, in case a refresh token is requested), must send an authenticated
@@ -84,7 +83,7 @@ request to the IAM `/token` endpoint, specifying the following properties:
 | scope              | The set of scopes requested for the new access token |
 | audience           | Optional. A space-separated list of resource identifiers that will be used to limit the audience of the issued token |
 
-#### Scopes in exchanged tokens 
+### Scopes in exchanged tokens 
 
 A client, when requesting a token exchange, can request any of the scopes
 enabled by its client configuration. IAM system scopes are however handled in a

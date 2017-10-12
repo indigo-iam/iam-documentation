@@ -1,20 +1,22 @@
 # Developer guide
 
-## How to build
+## Build requirements
 
 The IAM is a Spring Boot Java application.
 
 To build it, you will need:
 
 - Java 8
-- Maven 
+- Maven 3.3.x or greater
 - Git
 
 ## Checking out the IAM code
 
 You can check out the IAM code as follows:
 
+```
   git clone https://github.com/indigo-iam/iam.git
+```
 
 ## Building the IAM
 
@@ -26,25 +28,25 @@ You can build the IAM packages with the following command:
 
 You will need:
 
-- Docker 1.11.1
-- Docker compose >= 1.7
+- Docker 1.11.1 or greater
+- Docker compose 1.7 or greater
 
 You can start a development/testing environment with the following command:
 
-```bash
+```
   docker-compose build
   docker-compose up
 ```
 
 The docker-compose.yml file requires that you set some environment variables
 for it to run properly, mainly to provide OAuth client credentials for external
-authentication mechanisms (Google, Github,...).
+authentication mechanisms (Google).
 
 The setup also assumes that you have an entry in your DNS server (complex) or
 /etc/hosts (simpler) that maps iam.local.io to the machine (or VM) where docker
 is running, e.g.:
 
-```bash
+```
 $ cat /etc/hosts
 ...
 
@@ -57,13 +59,13 @@ IAM JUnit integration tests can (and should) be run against mysql database.
 
 To do so, boostrap the database instance with docker-compose:
 
-```bash
+```
 docker-compose up db
 ```
 
 And then run the tests with the following command:
 
-```bash
+```
 mvn -Dspring.profiles.active=mysql-test test
 ```
 
@@ -72,7 +74,7 @@ mvn -Dspring.profiles.active=mysql-test test
 To build the docker images for the iam-service and iam-test client,
 use the following commands:
 
-```bash
+```
 sh iam-login-service/docker/build-prod-image.sh
 sh iam-test-client/docker/build-prod-image.sh
 ```

@@ -1,8 +1,8 @@
-# SCIM API reference
+# SCIM API 
 
-The IAM server provides a RESTful API based on the [SCIM standard][scim] that
-is used to manage users, change their personal information, manage their group
-membership, etc. 
+The IAM server provides a RESTful API, based on the [SCIM standard][scim], that
+can be used to manage users, change their personal information, manage their
+group membership, etc. 
 
 Access to the API is restricted to administrator users or OAuth clients that
 have access to the `scim:read` (for read access) or `scim:write` (for write
@@ -17,8 +17,7 @@ Authorization: Bearer h480djs93hd8
 ```
 
 The SCIM protocol specifies well known endpoints and HTTP methods for managing
-Resources defined in the [SCIM core schema specification][scim-core-schema]
-i.e., User and Group Resources correspond to /Users and /Groups respectively.
+Resources defined in the [SCIM core schema specification][scim-core-schema].
 
 ### IAM SCIM Endpoints
 
@@ -768,4 +767,4 @@ GET /scim/Groups/5bae2407-08e3-4171-b180-4b4a0196e7b6
 [mitre-doc]: https://github.com/mitreid-connect/OpenID-Connect-Java-Spring-Server/wiki
 [mitre-doc-api]: https://github.com/mitreid-connect/OpenID-Connect-Java-Spring-Server/wiki/API
 [scim]: http://www.simplecloud.info/
-[core-schema]: https://tools.ietf.org/html/rfc7643
+[scim-core-schema]: https://tools.ietf.org/html/rfc7643

@@ -1,4 +1,4 @@
-# Tokens API reference
+# Token management API 
 
 The IAM server has a RESTful API used to list and revoke active access and
 refresh tokens.
