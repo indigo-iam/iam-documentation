@@ -1,11 +1,69 @@
 # Summary
 
-* [Release notes](CHANGELOG.md)
-* [About Indigo IAM](doc/about.md)
-* [Developer guide](doc/developer.md)
-* [Deployment and Administration guide](doc/admin.md)
-* [User guide](doc/user-guide/README.md)
-    * [OpenID-connect Authorization Server](doc/user-guide/oidc_auth_server.md)
-    * [OAuth Token exchange support](doc/user-guide/oauth_token_exchange.md)
-    * [SCIM API reference](doc/user-guide/scim_api.md)
-    * [Registration Service](doc/user-guide/registration_service.md)
+* [IAM documentation](README.md)
+* [The IAM service](about.md)
+
+---
+
+### Deployment and administration guide
+
+* [Overview](admin-guide/README.md)
+* [NGINX configuration](admin-guide/nginx.md)
+* [Database configuration](admin-guide/mariadb.md)
+* [JSON Web Keys generation](admin-guide/json_web_key.md)
+* [Deployment with Docker](admin-guide/docker.md)
+* [Deployment with packages](admin-guide/packages.md)
+* [Automated provisioning with Puppet](admin-guide/puppet.md)
+* [Basic IAM setup](admin-guide/basic_conf.md)
+* [Enabling Google authentication](admin-guide/google.md)
+* [Enabling SAML authentication](admin-guide/saml.md)
+* [Configuration reference](admin-guide/configuration_reference.md)
+    - [IAM Spring profiles](admin-guide/configuration_reference.md#iam-spring-profiles)
+    - [Basic service configuration](admin-guide/configuration_reference.md#basic-service-configuration)
+    - [Database configuration](admin-guide/configuration_reference.md#database-configuration)
+    - [Google authentication settings](admin-guide/configuration_reference.md#google-authentication-settings)
+    - [SAML authentication settings](admin-guide/configuration_reference.md#saml-authentication-settings)
+    - [Notification service settings](admin-guide/configuration_reference.md#notification-service-settings)
+    - [Account linking settings](admin-guide/configuration_reference.md#account-linking-settings)
+* [Audit log](admin-guide/audit_log.md)
+* [Health checks](admin-guide/health_endpoints.md)
+---
+
+### User guide 
+* [Overview](user-guide/README.md)
+* [Client registration](user-guide/client-registration.md)
+* User Dashboard functionality
+    * [Changing the account password](user-guide/changing-password.md)
+    * [Changing the account information](user-guide/change-details.md)
+    * [Managing active tokens](user-guide/manage-active-tokens.md)
+    * [Managing approved sites](user-guide/manage-approved-sites.md)
+    * [External account linking](user-guide/account-linking/ext.md)
+    * [X.509 certificate linking](user-guide/account-linking/x509.md)
+* [Registration Service](user-guide/registration-service/README.md)
+    * [Submit a request](user-guide/registration-service/submit-request.md)
+    * [Confirm a request](user-guide/registration-service/confirm-request.md)
+    * [Manage registration requests](user-guide/registration-service/manage-request.md)
+    * [Set account password](user-guide/registration-service/choosing-password.md)
+    * [Reset account password](user-guide/registration-service/resetting-password.md)
+* [User management](user-guide/user-management.md)
+    * [User creation](user-guide/user-management.md#creating-a-user-account)
+    * [User deletion](user-guide/user-management.md#creating-a-user)
+    * [Managing user privileges](user-guide/user-management.md#managing-user-privileges)
+    * [Managing external identities](user-guide/user-management.md#managing-external-user-identities)
+* [Group Management](user-guide/groups_management.md)
+    * [Group creation](user-guide/groups_management.md#creating-a-group)
+    * [Group deletion](user-guide/groups_management.md#deleting-a-group)
+    * [Group membership management](user-guide/groups_management.md#managing-membership-for-a-group)
+* [IAM APIs](user-guide/api/README.md)
+    * [OAuth Token exchange API](user-guide/api/oauth-token-exchange.md)
+    * [SCIM API](user-guide/api/scim-api.md)
+    * [Token management API](user-guide/api/tokens-api.md)
+    * [OpenID Connect client registration APIs](user-guide/api/oidc-client-registration.md)
+    * [OpenID Connect client management API](user-guide/api/oidc-client-management.md)
+    * [OAuth token introspection API](user-guide/api/oauth-token-introspection.md)
+---
+
+### Developer guide 
+
+* [Overview](developer-guide/README.md)
+
