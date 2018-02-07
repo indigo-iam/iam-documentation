@@ -27,9 +27,11 @@
     - [Account linking settings](admin-guide/configuration_reference.md#account-linking-settings)
 * [Audit log](admin-guide/audit_log.md)
 * [Health checks](admin-guide/health_endpoints.md)
+* [Backup and restore](admin-guide/backup_restore.md)
+* [Upgrade](admin-guide/upgrade.md)
 ---
 
-### User guide 
+### User guide
 * [Overview](user-guide/README.md)
 * [Client registration](user-guide/client-registration.md)
 * User Dashboard functionality
@@ -63,7 +65,6 @@
     * [OAuth token introspection API](user-guide/api/oauth-token-introspection.md)
 ---
 
-### Developer guide 
+### Developer guide
 
 * [Overview](developer-guide/README.md)
-
