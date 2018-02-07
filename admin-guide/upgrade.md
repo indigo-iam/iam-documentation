@@ -27,7 +27,12 @@ $ docker stop iam-login-service
 $ docker rm iam-login-service
 ```
 
-Restart the container with the `latest` tag:
+Pull the latest image:
+```console
+$ docker pull indigoiam/iam-login-service:latest
+```
+
+Restart the container:
 ```console
 $ docker run \
   --name iam-login-service \
