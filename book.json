@@ -1,11 +1,22 @@
 {
-    "plugins": ["versions"],
-    "pluginsConfig": {
-        "versions": {
-            "type": "branches"
-        }
-    },
-    "variables": {
-        "iamVersion": "v1.2.0"
-    }
+		"plugins": ["versions"],
+		"pluginsConfig": {
+				"versions": {
+						"gitbookConfigURL": "book.json",
+						"options": [
+								{
+										"value": "https://iam-docs.github.io/v/v1.2.0/",
+										"text": "Version 1.2.0 (current)",
+										"selected": true
+								},
+								{
+										"value": "https://iam-docs.github.io/v/v1.1.0/",
+										"text": "Version 1.1.0"
+								}
+						]
+				}
+		},
+		"variables": {
+				"iamVersion": "v1.2.0"
+		}
 }
