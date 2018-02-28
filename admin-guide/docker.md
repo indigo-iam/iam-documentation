@@ -3,10 +3,6 @@
 The IAM service is provided on the following DockerHub repositories:
 
 - [indigoiam/iam-login-service](https://hub.docker.com/r/indigoiam/iam-login-service/)
-- [indigodatacloud/iam-login-service](https://hub.docker.com/r/indigodatacloud/iam-login-service/)
-
-We keep the images in sync, so the following instructions apply to images
-fetched from any of the two repositories.
 
 ### Configuration and run
 

@@ -45,11 +45,13 @@
     * [Manage registration requests](user-guide/registration-service/manage-request.md)
     * [Set account password](user-guide/registration-service/choosing-password.md)
     * [Reset account password](user-guide/registration-service/resetting-password.md)
+* [AUP management](user-guide/aup/README.md)
 * [User management](user-guide/user-management.md)
-    * [User creation](user-guide/user-management.md#creating-a-user-account)
-    * [User deletion](user-guide/user-management.md#creating-a-user)
-    * [Managing user privileges](user-guide/user-management.md#managing-user-privileges)
-    * [Managing external identities](user-guide/user-management.md#managing-external-user-identities)
+    * [Create account](user-guide/user-management.md#creating-a-user-account)
+    * [Delete account](user-guide/user-management.md#deleting-a-user-account)
+    * [Disable account](user-guide/user-management.md#disabling-a-user-account)
+    * [Manage account privileges](user-guide/user-management.md#managing-user-account-privileges)
+    * [Manage account external identities](user-guide/user-management.md#managing-external-user-account-identities)
 * [Group Management](user-guide/groups_management.md)
     * [Group creation](user-guide/groups_management.md#creating-a-group)
     * [Group deletion](user-guide/groups_management.md#deleting-a-group)
@@ -61,6 +63,7 @@
     * [OpenID Connect client registration APIs](user-guide/api/oidc-client-registration.md)
     * [OpenID Connect client management API](user-guide/api/oidc-client-management.md)
     * [OAuth token introspection API](user-guide/api/oauth-token-introspection.md)
+    * [AUP API](user-guide/api/aup-api.md)
 ---
 
 ### Developer guide 
