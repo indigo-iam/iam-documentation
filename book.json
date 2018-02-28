@@ -1,11 +1,18 @@
 {
-    "plugins": ["versions"],
-    "pluginsConfig": {
-        "versions": {
-            "type": "branches"
-        }
-    },
-    "variables": {
-        "iamVersion": "v1.1.0"
-    }
+		"plugins": ["versions"],
+		"pluginsConfig": {
+				"versions": {
+						"gitbookConfigURL": "https://raw.githubusercontent.com/indigo-iam/iam-documentation/v1.2.0/book.json",
+						"options": [
+								{
+										"value": "https://iam-docs.github.io/v/v1.1.0/",
+										"text": "Version 1.1.0",
+										"selected": true
+								}
+						]
+				}
+		},
+		"variables": {
+				"iamVersion": "v1.1.0"
+		}
 }
