@@ -2,7 +2,7 @@
 		"plugins": ["versions"],
 		"pluginsConfig": {
 				"versions": {
-						"gitbookConfigURL": "book.json",
+						"gitbookConfigURL": "https://raw.githubusercontent.com/indigo-iam/iam-documentation/v1.2.0/book.json",
 						"options": [
 								{
 										"value": "https://iam-docs.github.io/v/v1.2.0/",
