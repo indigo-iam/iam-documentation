@@ -1,4 +1,10 @@
 {
+    "plugins": ["versions"],
+    "pluginsConfig": {
+        "versions": {
+            "type": "branches"
+        }
+    },
     "variables": {
         "iamVersion": "v1.1.0"
     }
