@@ -2,13 +2,16 @@
 
 ## Backup
 
-The IAM Login Service status data keep safe are:
- - database data;
- - the enviroment file (`/etc/sysconfig/iam-login-service` on CentOS, `/etc/default/iam-login-service` on Ubuntu);
- - the main keystore (default `/var/lib/indigo/iam-login-service/keystore.jks`);
- - SAML keystore, if SAML profile is used (default `/var/lib/indigo/iam/iam-login-service/example.ks`).
+The IAM data that needs to saved by a backup is:
 
-An example of backup script can be the following:
+- database data;
+- service configuration, typically maintained in an environment file: `/etc/sysconfig/iam-login-service` on CentOS, `/etc/default/iam-login-service` on Ubuntuu; 
+- the keystore used to sign JWT tokens: `/var/lib/indigo/iam-login-service/keystore.jks`;
+- the SAML keystore, used when SAML authentication is enabled: `/var/lib/indigo/iam/iam-login-service/example.ks`.
+
+The above locations apply when installing from packages on CentOS or Ubuntu.
+
+An example of backup script is given below:
 
 ```bash
 timestamp=`date +'%Y-%m-%d_%H%M%S'`
@@ -33,12 +36,13 @@ tar czf iam_backup.tar.gz \
 
 The keystore paths can be customized, so adapt the backup script according your configuration.
 
-If you are deploying IAM as Docker container, use the path of the directory which
-you use as Docker volume.
+If you are deploying IAM with Docker and use a volume to provide configuration
+to the service, backup the contents of such volume.
 
 ## Restore
 
 From the backup, import the database data from the SQL dump:
+
 ```console
 $ export MYSQL_HOST="mydbhost"
 $ export MYSQL_USER="iamloginserviceuser"
@@ -48,9 +52,10 @@ $ export MYSQL_DBNAME="iamloginservicedb"
 $ mysql --host ${MYSQL_HOST} -u ${MYSQL_USER} -p${MYSQL_PWD} ${MYSQL_DBNAME} < iam_backup/iam_dump.sql
 ```
 
-### Deployment as system daemon
+### Deployment from packages
 
-To restore IAM Login Service from scratch, install the package.  
+To restore the IAM service from scratch, install the package.  
+
 On CentOS:
 ```console
 $ sudo yum install -y iam-login-service
@@ -61,6 +66,7 @@ $ sudo apt-get install -y iam-login-service
 ```
 
 Restore the environment file.  
+
 On CentOS:
 ```console
 $ sudo cp iam_backup/etc/sysconfig/iam-login-service /etc/sysconfig/iam-login-service
@@ -70,13 +76,13 @@ On Ubuntu:
 $ sudo cp iam_backup/etc/default/iam-login-service /etc/default/iam-login-service
 ```
 
-Copy the keystores in the correct path, according your configuration:
+Copy the keystores in the correct path, according to your configuration:
 ```console
 $ sudo cp iam_backup/var/lib/indigo/iam-login-service/keystore.jks /var/lib/indigo/iam-login-service/keystore.jks
 $ sudo cp iam_backup/var/lib/indigo/iam/iam-login-service/example.ks /var/lib/indigo/iam/iam-login-service/example.ks
 ```
 
-Ensure the keystores have the right owner:
+Ensure the keystores have the right ownership:
 ```console
 $ sudo chown -R iam:iam /var/lib/indigo/iam-login-service
 ```
@@ -86,8 +92,10 @@ Start the IAM Login Service daemon:
 $ sudo systemctl start iam-login-service
 ```
 
-### Deployment as Docker container
+### Deployment with Docker 
+
 Copy the files from the backup to the volume location:
+
 ```console
 $ cp iam_backup/iam-login-service/env /path/to/iam-login-service/env
 $ cp iam_backup/keystore.jks /path/to/keystore.jks

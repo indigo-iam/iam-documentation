@@ -1,27 +1,32 @@
-# Upgrade
+# Upgrade 
 
-Upgrade IAM the latest available version is pretty easy.
+This section provides instructions to upgrade the IAM service to the latest
+available version.
 
-### Deployment as system daemon
+### Deployment from packages
 
 Stop the service:
+
 ```console
 $ systemctl stop iam-login-service
 ```
 
 Update the package:
+
 ```console
 $ yum update -y iam-login-service
 ```
 
 Restart the service:
+
 ```console
 $ systemctl start iam-login-service
 ```
 
-### Deployment as Docker container
+### Deployment with Docker 
 
 Stop and remove the running container:
+
 ```console
 $ docker stop iam-login-service
 $ docker rm iam-login-service
