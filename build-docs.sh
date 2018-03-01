@@ -24,6 +24,7 @@ rsync -a --delete ${VERSIONED_BUILD_DIR}/* ${TARGET_DIR}/v/${GIT_BRANCH_NAME}
 
 if [ -n "${LINK_TO_ROOT}" ]; then
   pushd ${TARGET_DIR}/v
+  rm -f current
   ln -sf ${GIT_BRANCH_NAME} current
   popd
 fi
