@@ -18,6 +18,7 @@ VERSIONED_BUILD_DIR="${BUILD_DIR}/v/${GIT_BRANCH_NAME}"
 mkdir -p ${VERSIONED_BUILD_DIR}
 
 gitbook build . ${VERSIONED_BUILD_DIR}
+cp book.json ${VERSIONED_BUILD_DIR}
 
 rsync -a --delete ${VERSIONED_BUILD_DIR}/* ${TARGET_DIR}/v/${GIT_BRANCH_NAME}
 
