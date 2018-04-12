@@ -35,4 +35,9 @@ IAM_TOMCAT_ACCESS_LOG_ENABLED=false
 
 # Directory where the tomcat access log will be written (when enabled)
 IAM_TOMCAT_ACCESS_LOG_DIRECTORY=/tmp
+
+## Token content settings 
+
+# Include authentication claims in issued access tokens
+IAM_ACCESS_TOKEN_INCLUDE_AUTHN_INFO=false
 ```
