@@ -34,6 +34,7 @@
 ### User guide
 * [Overview](user-guide/README.md)
 * [Client registration](user-guide/client-registration.md)
+* [How to obtain a token](user-guide/getting-a-token.md)
 * User Dashboard functionality
     * [Changing the account password](user-guide/changing-password.md)
     * [Changing the account information](user-guide/change-details.md)
