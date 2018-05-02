@@ -1,6 +1,6 @@
 # Group requests API
 
-IAM Login Service provide RESTful API to create and manage group membership requests.
+IAM Login Service provides a RESTful API to create and manage group membership requests.
 
 - [POST /iam/group_requests](#post-iamgrouprequests)
 - [GET /iam/group_requests](#get-iamgrouprequests)
@@ -27,15 +27,15 @@ of the submitted request.
 
 **Code**: `200 Ok`
 
-**Content**: A JSON representation of the new request
+**Content**: A JSON representation of the new request.
 
 ### Error response
 
-**Condition**: The user is not authenticated
+**Condition**: The user is not authenticated.
 
 **Code**: `401 Unauthorized`
 
-**Content**: A JSON with the error description
+**Content**: A JSON with the error description.
 
 ```json
 {
@@ -44,11 +44,11 @@ of the submitted request.
 }
 ```
 
-**Condition**: The request already exists
+**Condition**: The request already exists.
 
 **Code**: `400 Bad Request`
 
-**Content**: A JSON with the error description
+**Content**: A JSON with the error description.
 
 ```json
 {
@@ -88,26 +88,26 @@ Response:
 
 Returns a paginated list of group requests.
 The list can be filtered by username, group name or request status.
-Users the administrative privileges can list all ther requests; 
-other users only their own requests.
+Users with administrative privileges can list all their requests;
+other users can list only their own requests.
 
 **Authentication required**: true
 
 ### Success response
 
-**Condition**: The user is authenticated
+**Condition**: The user is authenticated.
 
 **Code**: `200 Ok`
 
-**Content**: A JSON representation of the request list
+**Content**: A JSON representation of the request list.
 
 ### Error response
 
-**Condition**: The user is not autheticated
+**Condition**: The user is not autheticated.
 
 **Code**: `401 Unauthorized`
 
-**Content**: A JSON with the error message
+**Content**: A JSON with an error message representation.
 
 ```json
 {
@@ -166,10 +166,8 @@ Returns the details about a group request.
 
 ### Success response
 
-**Condition**:
-
-- The user is authenticated;
-- Unprivileged user get an own request;
+**Condition**: The user is authenticated and can access the request 
+(privileged users can access all request, other users only the requests they submitted).
 
 **Code**: `200 Ok`
 
@@ -177,7 +175,7 @@ Returns the details about a group request.
 
 ### Error response
 
-**Condition**: The user is not authenticated
+**Condition**: The user is not authenticated.
 
 **Code**: `401 Unauthorized`
 
@@ -189,7 +187,7 @@ Returns the details about a group request.
 }
 ```
 
-**Condition**: Unprivileged user request details about of another user group request
+**Condition**: User is not authorized to access the group request.
 
 **Code**: `403 Forbidden`
 
@@ -198,7 +196,7 @@ Returns the details about a group request.
 Access is denied
 ```
 
-**Condition**: The request id does not exist.
+**Condition**: A request linked to the given id does not exist.
 
 **Code**: `400 Bad request`
 
@@ -219,7 +217,7 @@ Content-Type: application/json
 Cache-Control: no-cache
 ```
 
-Respose:
+Response:
 ```json
 {
     "uuid": "d5b652b2-4bb5-401a-bfb9-a795353798b3",
@@ -236,13 +234,13 @@ Respose:
 
 Deletes a group request.
 Administrators can delete any request, users can only delete the `PENDING` requests
-they own.
+they previously submitted.
 
 **Authentication required**: true
 
 ### Success response
 
-**Condition**: The request exists
+**Condition**: A request linked to the given id exists.
 
 **Code**: `204 No Content`
 
@@ -250,11 +248,11 @@ they own.
 
 ### Error response
 
-**Condition**: The request does not exist.
+**Condition**: A request linked to the given id does not exist.
 
 **Code**: `400 Bad Request`
 
-**Content**: A JSON wit error message
+**Content**: A JSON with an error message representation.
 
 ```json
 {
@@ -300,7 +298,7 @@ Only administrators can approve requests.
 
 **Code**: `400 Bad Request`
 
-**Content**: A JSON with the error message
+**Content**: A JSON with an error message representation.
 
 ```json
 {
@@ -338,7 +336,7 @@ Response:
 ## POST /iam/group_requests/{uuid}/reject
 
 Rejects a group request.
-A motivation is required, as body parameter.
+A `motivation` parameter is required.
 Only administrators can reject requests.
 
 **Authentication required**: true
@@ -352,7 +350,7 @@ Only administrators can reject requests.
 
 **Code**: `200 Ok`
 
-**Content**:  The JSON representation of the updated group membership request.
+**Content**: The JSON representation of the updated group membership request.
 
 ### Error response
 
@@ -360,11 +358,11 @@ Only administrators can reject requests.
 
 - The request doesn't exist;
 - The request isn't in `PENDING` status;
-- Missing motivation field.
+- Missing motivation parameter.
 
 **Code**: `400 Bad Request`
 
-**Content**: A JSON with the error message
+**Content**: A JSON with an error message representation.
 
 ```json
 {
