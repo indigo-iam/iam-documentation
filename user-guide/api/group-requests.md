@@ -166,7 +166,7 @@ Returns the details about a group request.
 
 ### Success response
 
-**Condition**: The user is authenticated and can access the request 
+**Condition**: The user is authenticated and can access the request
 (privileged users can access all request, other users only the requests they submitted).
 
 **Code**: `200 Ok`
