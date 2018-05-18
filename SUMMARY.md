@@ -67,6 +67,7 @@
     * [OpenID Connect client management API](user-guide/api/oidc-client-management.md)
     * [OAuth token introspection API](user-guide/api/oauth-token-introspection.md)
     * [AUP API](user-guide/api/aup-api.md)
+    * [Group membership requests API](user-guide/api/group-requests.md)
 ---
 
 ### Developer guide
