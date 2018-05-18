@@ -12,7 +12,7 @@ IAM Login Service provides a RESTful API to create and manage group membership r
 ## POST /iam/group_requests
 
 Create a new group membership request.
-The body of the request must contains a JSON with the group name and a motivation
+The body of the request must contain a JSON with the group name and a motivation
 of the submitted request.
 
 **Authentication required**: true
@@ -22,8 +22,8 @@ of the submitted request.
 **Conditions**:
 
 - The user is authenticated;
-- the user is not already member of the required group;
-- the request does not already exist.
+- the user is not already member of the requested group;
+- a request from the user for such group does not exist.
 
 **Code**: `200 Ok`
 
@@ -88,8 +88,8 @@ Response:
 
 Returns a paginated list of group requests.
 The list can be filtered by username, group name or request status.
-Users with administrative privileges can list all their requests;
-other users can list only their own requests.
+Users with administrative privileges can list all requests;
+other users only the requests they submitted.
 
 **Authentication required**: true
 
@@ -304,7 +304,8 @@ Only administrators can approve requests.
 {
     "error": "Group request with UUID [b28790d4-90d4-471f-8b85-79d5fd761b8c] does not exist"
 }
-
+```
+```json
 {
     "error": "Invalid group request transition: APPROVED -> APPROVED"
 }
@@ -358,7 +359,7 @@ Only administrators can reject requests.
 
 - The request doesn't exist;
 - The request isn't in `PENDING` status;
-- Missing motivation parameter.
+- The motivation required request parameter is missing.
 
 **Code**: `400 Bad Request`
 
@@ -368,7 +369,8 @@ Only administrators can reject requests.
 {
     "error": "Invalid group request transition: APPROVED -> REJECTED"
 }
-
+```
+```json
 {
     "error": "Group request with UUID [d5b652b2-4bb5-401a-bfb9-a79535379b3] does not exist"
 }
