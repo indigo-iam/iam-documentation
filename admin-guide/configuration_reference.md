@@ -57,3 +57,7 @@ section](saml.md).
 ## Account linking settings
 
 {% include "conf/account_linking_opts.md" %}
+
+## Privacy policy settings
+
+{% include "conf/privacy_policy_opts.md" %}
