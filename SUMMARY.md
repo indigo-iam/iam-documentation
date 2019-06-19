@@ -1,9 +1,16 @@
 # Summary
 
-* [IAM documentation](README.md)
 * [The IAM service](about.md)
+* [Documentation](README.md)
 
 ---
+### IAM as a Service
+* [IAM as a service](iam-aas/README.md)
+    - [Terms of service](iam-aas/terms-of-service.md)
+    - [Service level Agreement](iam-aas/sla.md)
+    - [Privacy policy](iam-aas/privacy-policy.md)
+---
+
 
 ### Deployment and administration guide
 

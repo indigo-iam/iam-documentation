@@ -1,61 +1,47 @@
 # The INDIGO Identity and Access Management service 
 
-The Identity and Access Management Service provides a layer where identities,
-enrollment, group membership and other attributes and authorization policies on
-distributed resources can be managed in an homogeneous way, supporting the
-federated authentication mechanisms supported by the INDIGO AAI. The IAM
-service provides user identity and policy information to services so that
-consistent authorization decisions can be enforced across distributed services.
+The INDIGO Identity and Access Management Service provides a layer where
+identities, enrollment, group membership and other attributes and authorization
+policies on distributed resources can be managed in an homogeneous way,
+supporting identity federations and other authentication mechanisms (X.509
+certificates and social logins).
+
+The IAM service has been succesfully integrated with many off-the-shelf
+components like Openstack, Kubernetes, Atlassian JIRA and Confluence, Grafana
+and with key Grid computing middleware services (FTS, dCache, StoRM).
 
 ## Functions
 
-* **Authentication**: The IAM supports the authentication mechanisms defined by
-  the INDIGO AAI architecture (SAML, X.509, OpenID connect)
-* **Session management**: the IAM provides session management functionality.
-  Sessions are used to provide single sign-on and logout functionality to
-  client applications and services.
+* **Authentication**: The IAM supports authentication via SAML IdPs or identity
+  federations, OpenID Connect providers and X.509 certificates.
 * **Enrollment**: The IAM provides enrollment and registration functionalities,
-  so that users can join groups/collaborations according to user-defined flows.
+  so that users can join groups/collaborations according to well-defined flows.
 * **Attribute and identity management**: The IAM provides services to manage
-  group membership, attributes assignment, to group/collaboration
-  administrators and the ability, for users, to consolidate multiple identities
-  in a single INDIGO identity.
+  group membership, attributes assignment and account linking functionality.
 * **User provisioning**: the IAM provides endpoints to provision information
   about users identities to other services, so that consistent local account
-  provisioning, for example, can be implemented
-* **Policy definition, distribution and evaluation**: the IAM provides tools
-  and APIs to
-    - define authorization policies on distributed resources
-    - define policy distribution flows so that policies can be imported from
-      other IAM instances
-    - evaluate policies against a request context and issue an authorization
-      decision
+  provisioning, for example, can be implemented.
 
-## Architecture
+## Service access options
 
-![INDIGO IAM Architecture](images/IAM-architecture.png)
+### IAM as a service 
 
-The IAM service is composed of basic components (which could be deployed as
-microservices) providing part of the full IAM functionality.
+INFN provides IAM as a service to partner research communities. In this
+scenario, a dedicated IAM instance is deployed on the INFN infrastructure and
+configured according to the community needs. INFN takes care of keeping the
+service operational and up-to-date, while administrative control on the IAM
+instance is granted to the community. 
 
-* The **Authentication** component will deal with user authentication through
-  the supported mechanism (e.g., SAML, X.509, OpenID Connect) and expose the
-  authentication information to the other IAM components.
-* The **Internal Authorization** component, which is orthogonal to all exposed
-  services, defines an authorization layer that defines local, IAM-specific
-  authorization policies, like for instance which user is allowed to create a
-  new collaboration, or to cancel sessions in case of a security incident, etc.
-* The **Session management** component deals with the management of sessions
-  (search, creation, revocation, etc.), in order to provide support for single
-  sign-on and logout to client services and applications.
-* The **User management** component implements user management functions, like
-  attribute management, identity management, enrollment and registration flows
-  (e.g., how new users can join an existing collaboration), and provisioning.
-* The **Authorization** component provides a flexible XACML authorization
-  engine, and exposes policy authoring, evaluation and distribution
-  functionality.
-* The **Auditing** component maintains a persistent audit log of all the
-  actions performed in the system.
+For more information on how to access IAM as a service, click
+[here][iam-as-a-service].
+
+### On-premise deployment 
+
+IAM is an Apache-licensed identity solution, for which we provide a Docker
+image on dockerhub and RPM and Debian packages.
+
+IAM can be deployed on-premises following the advice in the [Deployment and
+administration guide][deployment-guide].
 
 ## Involved Software & Specifications
 
@@ -71,3 +57,6 @@ microservices) providing part of the full IAM functionality.
 
 * [Mitreid-connect](https://github.com/mitreid-connect/)
 * [Argus authorization service](http://argus-authz.github.io/)
+
+[iam-as-a-service]: iam-aas/README.md
+[deployment-guide]: admin-guide/README.md
