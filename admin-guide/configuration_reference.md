@@ -1,6 +1,8 @@
 # Configuration reference
 
-All configurable aspects of the IAM are configured via environment variables and Spring profile directives.
+Most configurable aspects of the IAM are configured via environment variables
+and Spring profile directives.
+
 
 ## IAM Spring profiles
 
@@ -24,9 +26,31 @@ IAM docker image, by setting the IAM_JAVA_OPTS environment variable as follows:
 IAM_JAVA_OPTS="-Dspring.profiles.active=prod,google,saml"
 ```
 
+## Overriding default configuration templates
+
+Fine-grained control over configuration can be obtained following the rules for
+spring boot [externalized configuration][spring-boot-conf-rules].
+This basically means defining an YAML file to override the default
+configuration files embedded for the Spring profile activated for your
+instance.  The configuration directory depends on your deployment type, as
+summarized in the following table:
+
+| Deployment type | Configuration directory |
+|-----------------|-------------------------|
+| Docker | `/indigo-iam/config/` |
+| Package (RPM, Deb) | `/etc/indigo-iam/config` |
+
+**IMPORTANT**: the templated configuration should solve most use cases,
+override default configuration **only if you know what you are doing**, and for
+those scenarios not served by the default templates. 
+
 ## Basic service configuration 
 
 {% include "conf/service_opts.md" %}
+
+## Access token contents configuration 
+
+{% include "conf/access_token_opts.md" %}
 
 ## Organization configuration
 
@@ -40,8 +64,8 @@ IAM_JAVA_OPTS="-Dspring.profiles.active=prod,google,saml"
 
 {% include "conf/google_opts.md" %}
 
-For more information and examples, see the [Enabling Google
-Authentication section](google.md).
+For more information and examples, see the [Enabling OpenID Connect
+Authentication section](oidc.md).
 
 ## SAML authentication settings
 
@@ -61,3 +85,6 @@ section](saml.md).
 ## Privacy policy settings
 
 {% include "conf/privacy_policy_opts.md" %}
+
+
+[spring-boot-conf-rules]: https://docs.spring.io/spring-boot/docs/1.3.8.RELEASE/reference/html/boot-features-external-config.html

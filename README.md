@@ -9,7 +9,12 @@ Management (IAM) service.
 
 ## Release notes
 
-See the [release notes on Github][release-notes].
+#### Notable changes in IAM {{book.iamVersion}}
+
+- The profile used to enable Google authentication changed from `google` to
+  `oidc`. For more information see [this page][oidc-conf]
+
+- For the full list of changes, see the [release notes on Github][release-notes].
 
 ## Documentation structure
 
@@ -36,3 +41,4 @@ The INDIGO IAM service documentation is composed of the following guides:
 [user-guide]: user-guide/README.md
 [developer-guide]: developer-guide/README.md
 [release-notes]: https://github.com/indigo-iam/iam/releases/tag/{{book.iamVersion}}
+[oidc-conf]: admin-guide/oidc.md

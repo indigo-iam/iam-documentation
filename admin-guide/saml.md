@@ -201,7 +201,17 @@ IAM_SAML_METADATA_LOOKUP_SERVICE_REFRESH_PERIOD_SEC=3600
 IAM_SAML_LOGIN_BUTTON_TEXT="Sign in with IDEM"
 ```
 
-See the [configuration reference][conf-ref] for more SAML metadata options.
+## Custom SAML configuration
+
+The configuration based on environment variables relies on a [configuration
+template][application-saml] that fits most use cases embedded in the IAM war
+file. 
+
+To have full control on the SAML configuration, provide a custom
+`application-saml.yml` file in the IAM configuration directory.
+
+See the [configuration reference][conf-ref] for more SAML metadata options and
+instructions on how to override the default IAM configuration.
 
 [epuid]:http://software.internet2.edu/eduperson/internet2-mace-dir-eduperson-201602.html#eduPersonUniqueId
 [eptid]:http://software.internet2.edu/eduperson/internet2-mace-dir-eduperson-201602.html#eduPersonTargetedID
@@ -210,3 +220,5 @@ See the [configuration reference][conf-ref] for more SAML metadata options.
 [shib-docs]: https://wiki.shibboleth.net/confluence/display/CONCEPT/EntityNaming
 [shib-docs-md]: https://wiki.shibboleth.net/confluence/display/CONCEPT/Metadata
 [sirtfi]: https://refeds.org/sirtfi
+[edugain]: https://edugain.org/
+[application-saml]: https://raw.githubusercontent.com/indigo-iam/iam/{{book.iamVersion}}/iam-login-service/src/main/resources/application-saml.yml

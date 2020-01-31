@@ -36,8 +36,22 @@ IAM_TOMCAT_ACCESS_LOG_ENABLED=false
 # Directory where the tomcat access log will be written (when enabled)
 IAM_TOMCAT_ACCESS_LOG_DIRECTORY=/tmp
 
-## Token content settings 
+## Actuator endpoint settings
 
-# Include authentication claims in issued access tokens
-IAM_ACCESS_TOKEN_INCLUDE_AUTHN_INFO=false
+# Sets the username of the user allowed to have privileged access to actuator
+# endpoints
+IAM_SUPERUSER_USERNAME=whatever
+
+# Sets the password of the user allowed to have privileged access to actuator
+# endpoints
+IAM_SUPERUSER_PASSWORD=whatever
+
+
+## Local resources configuration
+
+# Enables the serving of resources from the local file system 
+IAM_LOCAL_RESOURCES_ENABLE=false
+
+# Sets the directory that contains the local resources that should be exposed
+IAM_LOCAL_RESOURCES_LOCATION=file:/indigo-iam/local-resources
 ```
