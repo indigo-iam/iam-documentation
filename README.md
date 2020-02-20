@@ -11,12 +11,7 @@ Management (IAM) service.
 
 #### Notable changes in IAM {{book.iamVersion}}
 
-- The profile used to enable Google authentication changed from `google` to
-  `oidc`. For more information see [this page][oidc-conf]
-
-- The IAM package repository has been migrated to a [new location][iam-repo];
-  for more information see the [install from packages][package-install]
-  section;
+- Put here notable and breaking changes
 
 - For the full list of changes, see the [release notes on Github][release-notes].
 
