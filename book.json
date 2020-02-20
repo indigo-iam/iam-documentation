@@ -5,9 +5,13 @@
       "gitbookConfigURL": "https://indigo-iam.github.io/docs/v/current/book.json",
       "options": [
         {
-          "value": "https://indigo-iam.github.io/docs/v/v1.5.0.RELEASE/",
-          "text": "Version 1.5.0.RELEASE (current)",
+          "value": "https://indigo-iam.github.io/docs/v/v1.6.0.RELEASE/",
+          "text": "Version 1.6.0.RELEASE (current)",
           "selected": true
+        },
+        {
+          "value": "https://indigo-iam.github.io/docs/v/v1.5.0.RELEASE/",
+          "text": "Version 1.5.0.RELEASE"
         },
         {
           "value": "https://indigo-iam.github.io/docs/v/v1.4.0/",
@@ -33,6 +37,6 @@
     }
   },
   "variables": {
-    "iamVersion": "v1.5.0.RELEASE"
+    "iamVersion": "v1.6.0.RELEASE"
   }
 }
