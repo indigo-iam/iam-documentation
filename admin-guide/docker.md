@@ -4,6 +4,13 @@ The IAM service is provided on the following DockerHub repositories:
 
 - [indigoiam/iam-login-service](https://hub.docker.com/r/indigoiam/iam-login-service/)
 
+The docker image tag corresponding to this version of the documentation is:
+
+{% set imageTag = book.iamVersion + "-latest" %}
+{% set imageName = "indigoiam/iam-login-service" + ":" + imageTag %}
+
+<code>{{imageName}}</code>
+
 ### Configuration and run
 
 Prepare an environment file that will contain the environment variables
