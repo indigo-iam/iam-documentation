@@ -47,4 +47,4 @@ The INDIGO IAM service documentation is composed of the following guides:
 [release-notes]: https://github.com/indigo-iam/iam/releases/tag/{{book.iamVersion}}
 [oidc-conf]: admin-guide/oidc.md
 [package-install]: admin-guide/packages.md
-[iam-repo]: https://indigoiam.github.io/repo
+[iam-repo]: https://indigo-iam.github.io/repo
