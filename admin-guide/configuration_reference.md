@@ -30,19 +30,19 @@ IAM_JAVA_OPTS="-Dspring.profiles.active=prod,google,saml"
 
 Fine-grained control over configuration can be obtained following the rules for
 spring boot [externalized configuration][spring-boot-conf-rules].
-This basically means defining an YAML file to override the default
-configuration files embedded for the Spring profile activated for your
-instance.  The configuration directory depends on your deployment type, as
-summarized in the following table:
+This basically means defining one or more YAML files to override the default
+configuration files embedded in the IAM war package for the Spring profiles
+activated for your instance.  The files must be placed in the IAM configuration
+directory, which depends on how you deployed IAM: 
 
 | Deployment type | Configuration directory |
 |-----------------|-------------------------|
 | Docker | `/indigo-iam/config/` |
 | Package (RPM, Deb) | `/etc/indigo-iam/config` |
 
-**IMPORTANT**: the templated configuration should solve most use cases,
-override default configuration **only if you know what you are doing**, and for
-those scenarios not served by the default templates. 
+**IMPORTANT**: the default configuration should solve most use cases, override
+default configuration **only if you know what you are doing**, and for those
+scenarios not served by the default templates. 
 
 ## Basic service configuration 
 

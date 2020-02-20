@@ -7,48 +7,50 @@ the following platforms:
 
 Packages and repo files are hosted on the [INDIGO IAM package repository][iam-pkg-repo].
 
-## Configure the INDIGO IAM repository
+## CENTOS 7
 
-On CentOS:
-```console
-$ sudo wget -O /etc/yum.repos.d/indigo-iam.repo https://repo.cloud.cnaf.infn.it/repository/indigo-iam/repofiles/rhel/indigoiam-stable-el7.repo
-```
+1. Install the INDIGO IAM release key:
 
-On Ubuntu 16.04:
-```console
-$ sudo wget -O /etc/apt/sources.list.d/indigo-iam.list https://repo.cloud.cnaf.infn.it/repository/indigo-iam/repofiles/ubuntu/indigoiam-stable-xenial.list
-```
+  ```console
+  $ sudo rpm --import https://indigo-iam.github.io/repo/gpgkeys/indigo-iam-release.pub.gpg
+  ```
 
-**WARNING: The following steps are required only on Ubuntu**
-The packages are served on HTTPS: on Ubuntu
-install the support to fetch them on this protocol:
+2. Install the repo files:
 
-```console
-$ sudo apt-get install -y apt-transport-https
-```
+  ```console
+  $ sudo yum-config-manager --add-repo https://indigo-iam.github.io/repo/repofiles/rhel/indigoiam-stable-el7.repo
+  ```
 
-Then, since the repository is unsigned, skip the GPG check with the
-following configuration option:
+3. Install packages:
 
-```console
-$ sudo echo 'APT::Get::AllowUnauthenticated yes;' > /etc/apt/apt.conf.d/99auth
-```
+  ```console
+  $ sudo yum makecache
+  $ sudo yum install -y iam-login-service
+  ```
 
-## Package installation
+### Ubuntu 16.04 (Xenial)
 
-Refresh the repository cache and install the IAM login service package.
+1. Install the INDIGO IAM release key:
+  ```console
+  $ wget -q0 - https://indigo-iam.github.io/repo/gpgkeys/indigo-iam-release.pub.gpg | sudo apt-key add -
+  ```
 
-On CentOS:
-```console
-$ sudo yum makecache
-$ sudo yum install -y iam-login-service
-```
+2. Install the HTTPS transport for apt:
+  ```console
+  $ sudo apt-get install -y apt-transport-https
+  ```
 
-On Ubuntu:
-```console
-$ sudo apt-get update -y
-$ sudo apt-get install -y iam-login-service
-```
+3. Get the repo files:
+
+  ```console
+  $ sudo wget -O /etc/apt/sources.list.d/indigo-iam.list https://repo.cloud.cnaf.infn.it/repository/indigo-iam/repofiles/ubuntu/indigoiam-stable-xenial.list
+  ```
+
+4. Install packages:
+  ```console
+  $ sudo apt-get update -y
+  $ sudo apt-get install -y iam-login-service
+  ```
 
 ## IAM service configuration
 
@@ -91,4 +93,4 @@ To access the service logs, use the following command:
 $ sudo journalctl -fu iam-login-service
 ```
 
-[iam-pkg-repo]: https://repo.cloud.cnaf.infn.it/repository/indigo-iam/index.html
+[iam-pkg-repo]: https://indigo-iam.github.io/repo

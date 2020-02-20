@@ -14,6 +14,10 @@ Management (IAM) service.
 - The profile used to enable Google authentication changed from `google` to
   `oidc`. For more information see [this page][oidc-conf]
 
+- The IAM package repository has been migrated to a [new location][iam-repo];
+  for more information see the [install from packages][package-install]
+  section;
+
 - For the full list of changes, see the [release notes on Github][release-notes].
 
 ## Documentation structure
@@ -42,3 +46,5 @@ The INDIGO IAM service documentation is composed of the following guides:
 [developer-guide]: developer-guide/README.md
 [release-notes]: https://github.com/indigo-iam/iam/releases/tag/{{book.iamVersion}}
 [oidc-conf]: admin-guide/oidc.md
+[package-install]: admin-guide/packages.md
+[iam-repo]: https://indigoiam.github.io/repo

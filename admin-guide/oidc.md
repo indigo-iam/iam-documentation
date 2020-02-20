@@ -118,3 +118,4 @@ the default IAM configuration.
 
 [google-oidc]: https://developers.google.com/identity/protocols/OpenIDConnect
 [oidc-discovery-url]: https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfig
+[conf-ref]: configuration_reference.html
