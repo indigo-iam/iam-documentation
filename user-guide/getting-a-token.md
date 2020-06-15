@@ -2,9 +2,99 @@
 
 A token can be obtained from a command-line interface (CLI) in two ways:
 
-- leveraging the OAuth resource-owner password credentials flow (password flow,
-  in short)
-- leveraging the OAuth device code flow
+- using `oidc-agent`
+- using scripts linked to this page, using the resource-owner password
+  credentials flow or the OAuth device flow
+
+In this section we recommend the installations of a set of tools that can help
+in managing tokens.
+
+## Obtaining a token using `oidc-agent`
+
+[oidc-agent][oidc-agent] is a useful tool to easily get and manage access
+tokens for command-line applications.
+
+### Installing oidc-agent
+
+See [oidc-agent installation
+instructions](https://indigo-dc.gitbook.io/oidc-agent/installation/install).
+
+#### Quick CENTOS7 installation instructions
+
+This recipe shows how to quickly install `oidc-agent` on CENTOS 7.
+
+```bash
+# yum -y install epel-release
+# yum -y install https://github.com/indigo-dc/oidc-agent/releases/download/v3.3.1/oidc-agent-3.3.1-1.el7.x86_64.rpm
+```
+
+### Bootstrapping oidc-agent
+
+The first thing to do is to start `oidc-agent`.
+This can be done issuing the following command:
+
+```bash
+$ eval $(oidc-agent)
+Agent pid 62088
+```
+
+### Registering a client
+
+In order to obtain a token out of IAM, a user needs a client registered.
+`oidc-agent` can automate this step and store client credentials securely
+on the user machine.
+
+A new client can be registered using the `oidc-gen` command, as follows:
+
+```bash
+$ oidc-get -w device wlcg
+```
+
+The `-w device` instructs `oidc-agent` to use the device code flow for the
+authentication, which is the recommended way with IAM.
+
+oidc-agent will display a list of different providers that can be used for
+registration:
+
+```bash
+[1] https://wlcg.cloud.cnaf.infn.it/
+[2] https://iam-test.indigo-datacloud.eu/
+...
+[20] https://oidc.scc.kit.edu/auth/realms/kit/
+```
+
+Select one of the registered providers, or type a custom issuer (for IAM, the
+last character of the issuer string is always a `/`, e.g.
+`https://wlcg.cloud.cnaf.infn.it/`).
+
+Then oidc-agent asks for the scopes, typing `max` (without quotes) allows to
+get all the allowed scopes.
+
+oidc-agent will register a new client and store the client credentials and a
+refresh token locally in encrypted form (the agent will ask for a password from
+the user).
+
+### Getting tokens
+
+Tokens can be obtained using the `oidc-token` command, as follows:
+
+```bash
+oidc-token wlcg
+```
+
+This will request a token with all the scopes requested at client registration
+time. To limit the scopes included in the token, the `-s` flag can be used, as
+follows:
+
+```bash
+oidc-token -s storage.read:/ wlcg
+```
+
+The token audience can be limited using the `--aud` flag,
+
+```bash
+oidc-token --aud example.audience -s storage.read:/ wlcg
+```
 
 ## Obtaining a token with the password flow
 
@@ -63,3 +153,4 @@ which does the following:
 [oauth-device-code-flow]: https://tools.ietf.org/html/draft-ietf-oauth-device-flow-09
 [get-token-script]: https://gist.github.com/andreaceccanti/7d863db5ce3f43c74123a2cea8b8f9ff
 [dc-get-token-script]: https://gist.github.com/andreaceccanti/5b69323b89ce08321e7b5236de503600
+[oidc-agent]: https://github.com/indigo-dc/oidc-agent
