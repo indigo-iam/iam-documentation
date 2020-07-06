@@ -24,8 +24,8 @@ instructions](https://indigo-dc.gitbook.io/oidc-agent/installation/install).
 This recipe shows how to quickly install `oidc-agent` on CENTOS 7.
 
 ```bash
-# yum -y install epel-release
-# yum -y install https://github.com/indigo-dc/oidc-agent/releases/download/v3.3.1/oidc-agent-3.3.1-1.el7.x86_64.rpm
+$ yum -y install epel-release
+$ yum -y install https://github.com/indigo-dc/oidc-agent/releases/download/v3.3.1/oidc-agent-3.3.1-1.el7.x86_64.rpm
 ```
 
 ### Bootstrapping oidc-agent
