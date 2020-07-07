@@ -26,6 +26,7 @@
 * [Enabling SAML authentication](admin-guide/saml.md)
 * [JWT profiles support](admin-guide/multi_profile_support.md)
 * [Membership lifecycle](admin-guide/lifecycle.md)
+* [Registration](admin-guide/registration.md)
 * [Configuration reference](admin-guide/configuration_reference.md#configuration-reference)
     - [IAM Spring profiles](admin-guide/configuration_reference.md#iam-spring-profiles)
     - [Overriding default configuration](admin-guide/configuration_reference.md#overriding-default-configuration-templates)
