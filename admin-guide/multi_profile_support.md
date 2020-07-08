@@ -116,9 +116,15 @@ In order to configure a IAM group as an optional group, add the
 This profile encodes group membership information following the rules defined
 by the [AARC G002][aarc-g002] profile document.
 
-This profile is assigned to clients using the `aarc` scope.
+In particular:
 
-**TODO (EV) **: describe profile in more detail.
+- groups and organisation name are not included by default in access and ID tokens;
+- organisation name can be requested using the `eduperson_scoped_affiliation` scope and it's encoded in the `eduperson_scoped_affiliation` claim;
+- groups can be requested using the `eduperson_entitlement` scope and they're encoded as URN in the `eduperson_entitlement` claim;
+
+All the mapping rules are described in the [White Paper for implementation mappings between SAML 2.0 and OpenID Connect in Research and Education](https://docs.google.com/document/d/1b-Mlet3Lq7qKLEf1BnHJ4nL1fq-vMe7fzpXyrq2wp08/edit).
+
+This profile is assigned to clients using the `aarc` scope.
 
 [wlcg-profile]: https://zenodo.org/record/3460258
 [aarc-g002]: https://aarc-project.eu/guidelines/aarc-g002/
