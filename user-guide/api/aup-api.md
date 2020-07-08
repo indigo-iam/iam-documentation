@@ -24,6 +24,7 @@ organization.
 
 ```json
 {
+  "url": "http://somehost.example.org/aup",
   "text": "This is my AUP text",
   "description": null,
   "signatureValidityInDays": 365,
@@ -31,6 +32,9 @@ organization.
   "lastUpdateTime": "2018-02-27T07:26:21.000+01:00"
 }
 ```
+
+Note: `text` is returned for backward compatible calls.
+
 #### Error response
 
 **Condition**: The AUP is not defined for the organization
@@ -59,7 +63,7 @@ Provide a representation of the AUP to be created
 
 ```json
 {
-  "text": [text, not blank],
+  "url": [url, not blank],
   "description": [text, optional, at most 128 chars],
   "signatureValidityInDays": [integer, >= 0]
 }
@@ -69,7 +73,7 @@ Provide a representation of the AUP to be created
 
 ```json
 {
-  "text": "This is my AUP text",
+  "url": "http://somehost.example.org/aup",
   "signatureValidityInDays": 365
 }
 ```
@@ -142,7 +146,7 @@ Provide a representation of the AUP to be patched
 
 ```json
 {
-  "text": [text, not blank],
+  "url": [url, not blank],
   "description": [text, optional, at most 128 chars],
   "signatureValidityInDays": [integer, >= 0]
 }
@@ -152,7 +156,7 @@ Provide a representation of the AUP to be patched
 
 ```json
 {
-  "text": "This is my AUP text",
+  "url": "http://somehost.example.org/aup",
   "signatureValidityInDays": 365
 }
 ```
@@ -171,7 +175,7 @@ Provide a representation of the AUP to be patched
     "description": null,
     "lastUpdateTime": "2018-02-27T19:53:49.557+01:00",
     "signatureValidityInDays": 0,
-    "text": "This is the updated AUP"
+    "url": "http://somehost.example.org/aup"
 }
 ```
 
