@@ -6,7 +6,7 @@ The IAM service is provided on the following DockerHub repositories:
 
 The docker image tag corresponding to this version of the documentation is:
 
-{% set imageTag = book.iamVersion + "-latest" %}
+{% set imageTag = book.iamVersion %}
 {% set imageName = "indigoiam/iam-login-service" + ":" + imageTag %}
 
 <code>{{imageName}}</code>

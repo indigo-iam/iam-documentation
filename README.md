@@ -11,10 +11,22 @@ Management (IAM) service.
 
 #### Notable changes in IAM {{book.iamVersion}}
 
-- Put here notable and breaking changes
+This release introduces new core functionality in IAM:
 
-- For the full list of changes, see the [release notes on Github][release-notes].
+- [Multiple token profiles](admin-guide/multi_profile_support.md) 
+- [Basic account lifecycle management](admin-guide/lifecycle.md)
+- [Improved registration configurability](admin-guide/registration.md) 
+- [Local authentication can be disabled](admin-guide/local_authn.md) to rely
+  completely on external identity providers
 
+{% set imageTag = book.iamVersion %}
+{% set imageName = "indigoiam/iam-login-service:" + imageTag %}
+
+The docker image tag for this release ({{book.iamVersion}}) is: 
+
+<code>{{imageName}}</code>
+
+For the full list of changes, see the [release notes on Github][release-notes].
 ## Documentation structure
 
 The INDIGO IAM service documentation is composed of the following guides:
