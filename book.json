@@ -6,12 +6,12 @@
       "options": [
         {
           "value": "https://indigo-iam.github.io/docs/v/v1.6.0/",
-          "text": "Version 1.6.0 (in development)"
+          "text": "Version 1.6.0 (current)",
+          "selected": true
         },
         {
           "value": "https://indigo-iam.github.io/docs/v/v1.5.0/",
-          "text": "Version 1.5.0 (current)",
-          "selected": true
+          "text": "Version 1.5.0"
         },
         {
           "value": "https://indigo-iam.github.io/docs/v/v1.4.0/",
