@@ -15,7 +15,7 @@ Assuming the organization that IAM will manage is called `test`, the following
 commands can be used  to create a database and a user for the IAM application:
 
 ```sql
-CREATE DATABASE iam_test_db;
+CREATE DATABASE iam_test_db CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 GRANT ALL PRIVILEGES on iam_test_db.* to 'iam_test'@'%' identified by 'some_super_secure_password';
 ```
 
